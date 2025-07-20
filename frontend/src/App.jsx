@@ -58,7 +58,7 @@ function App() {
 useEffect(() => {
   if (user) {
     const socketio = io('https://instragramcopy.onrender.com', {
-      query: { userId: user._id },
+      query: { userId: user?._id },
       transports: ['websocket'],
     });
 

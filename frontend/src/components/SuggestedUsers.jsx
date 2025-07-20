@@ -19,9 +19,9 @@ function SuggestedUsers() {
 
       <div className="space-y-4">
         {suggestedUsers.map((user) => (
-          <div key={user._id} className="flex items-center justify-between">
+          <div key={user?._id} className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Link to={`/profile/${user._id}`} onClick={() => window.scrollTo({
+              <Link to={`/profile/${user?._id}`} onClick={() => window.scrollTo({
   top: 0,
   left: 0,
   behavior: 'smooth'
@@ -36,7 +36,7 @@ function SuggestedUsers() {
 
               <div>
                 <Link
-                  to={`/profile/${user._id}`}  onClick={() => window.scrollTo({
+                  to={`/profile/${user?._id}`}  onClick={() => window.scrollTo({
   top: 0,
   left: 0,
   behavior: 'smooth'

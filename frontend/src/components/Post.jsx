@@ -36,7 +36,7 @@ function Post({ post }) {
   const deletePostHandler = async () => {
     try {
       const res = await axios.delete(
-        `https://instragramcopy.onrender.com/api/v1/post/delete/${post._id}`,
+        `https://instragramcopy.onrender.com/api/v1/post/delete/${post?._id}`,
         { withCredentials: true }
       );
       if (res.data.success) {
@@ -54,7 +54,7 @@ function Post({ post }) {
     const action = liked ? 'dislike' : 'like';
     try {
       const res = await axios.get(
-        `https://instragramcopy.onrender.com/api/v1/post/${post._id}/${action}`,
+        `https://instragramcopy.onrender.com/api/v1/post/${post?._id}/${action}`,
         { withCredentials: true }
       );
       if (res.data.success) {
@@ -62,7 +62,7 @@ function Post({ post }) {
         setPostLike(updatedLikes);
         setLiked(!liked);
         const updatedPostData = posts.map((p) =>
-          p._id === post._id
+          p?._id === post?._id
             ? {
                 ...p,
                 likes: liked ? p.likes.filter(id => id !== user.id) : [...p.likes, user._id],
@@ -80,7 +80,7 @@ function Post({ post }) {
   const commentHandler = async () => {
     try {
       const res = await axios.post(
-        `https://instragramcopy.onrender.com/api/v1/post/${post._id}/comment`,
+        `https://instragramcopy.onrender.com/api/v1/post/${post?._id}/comment`,
         { text },
         {
           headers: { 'Content-Type': 'application/json' },
@@ -93,7 +93,7 @@ function Post({ post }) {
         setComments(updatedCommentData);
         setText("");
         const updatedPostData = posts.map((p) =>
-          p._id === post._id ? { ...p, comments: updatedCommentData } : p
+          p?._id === post?._id ? { ...p, comments: updatedCommentData } : p
         );
         dispatch(setPosts(updatedPostData));
         dispatch(setSelectedPost({ ...post, comments: updatedCommentData }));
@@ -107,7 +107,7 @@ function Post({ post }) {
   const bookmarkHandler = async () => {
     try {
       const res = await axios.get(
-        `https://instragramcopy.onrender.com/api/v1/post/${post._id}/bookmark`,
+        `https://instragramcopy.onrender.com/api/v1/post/${post?._id}/bookmark`,
         { withCredentials: true }
       );
       if (res.data.success) {
@@ -127,7 +127,7 @@ function Post({ post }) {
        <div className="flex items-center gap-3">
   <div className="p-[2px] rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-pink-500">
     <div className="bg-black p-[2px] rounded-full">
-       <Link to={`/profile/${post.author._id}`} onClick={() => window.scrollTo({
+       <Link to={`/profile/${post.author?._id}`} onClick={() => window.scrollTo({
   top: 0,
   left: 0,
   behavior: 'smooth'
@@ -144,7 +144,7 @@ function Post({ post }) {
       </Link>
     </div>
   </div>
-   <Link to={`/profile/${post.author._id}`} onClick={() => window.scrollTo(0, 0)}>
+   <Link to={`/profile/${post.author?._id}`} onClick={() => window.scrollTo(0, 0)}>
   <h1 className="font-semibold text-sm">{post?.author?.username}</h1>
   </Link>
   {post?.author?._id === user?._id && (

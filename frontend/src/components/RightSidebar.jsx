@@ -10,7 +10,7 @@ function RightSidebar() {
   return (
     <div className="w-fit my-10 pr-20 text-black dark:text-white">
       <div className="flex items-center gap-3">
-        <Link to={`/profile/${user._id}`}onClick={() =>window.scrollTo({
+        <Link to={`/profile/${user?._id}`}onClick={() =>window.scrollTo({
   top: 0,
   left: 0,
   behavior: 'smooth'
@@ -23,7 +23,7 @@ function RightSidebar() {
 
         <div>
           <h1 className="font-semibold text-sm">
-            <Link to={`/profile/${user._id}`}>{user?.username}onClick={() => window.scrollTo({
+            <Link to={`/profile/${user?._id}`}>{user?.username}onClick={() => window.scrollTo({
   top: 0,
   left: 0,
   behavior: 'smooth'
