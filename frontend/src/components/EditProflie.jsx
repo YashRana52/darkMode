@@ -44,7 +44,7 @@ function EditProfile() {
     try {
       setLoading(true);
       const formData = new FormData();
-      formData.append('bio', input.bio);
+      formData.append('bio', input?.bio);
       formData.append('gender', input.gender);
       if (input.profilePhoto && input.profilePhoto instanceof File) {
         formData.append('profilePhoto', input.profilePhoto);
@@ -62,7 +62,7 @@ function EditProfile() {
       if (res.data.success) {
         const updatedData = {
           ...user,
-          bio: res.data.user.bio,
+          bio: res.data.user?.bio,
           profilePicture: res.data.user.profilePicture,
           gender: res.data.user.gender
         };
@@ -118,7 +118,7 @@ function EditProfile() {
         <div>
           <label className="text-sm text-gray-600 dark:text-gray-300 font-medium">Bio</label>
           <Textarea
-            value={input.bio}
+            value={input?.bio}
             onChange={(e) =>
               setInput((prev) => ({ ...prev, bio: e.target.value }))
             }

@@ -81,7 +81,7 @@ function CreatePost({ open, setOpen }) {
           </Avatar>
           <div>
             <h1 className="font-semibold text-sm">{user?.username}</h1>
-            <span className="text-gray-600 text-xs">{user.bio}</span>
+            <span className="text-gray-600 text-xs">{user?.bio}</span>
           </div>
         </div>
 
